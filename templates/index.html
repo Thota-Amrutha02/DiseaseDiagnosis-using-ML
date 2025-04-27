@@ -1,0 +1,297 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AI-Driven Disease Diagnosis</title>
+        <style>
+            /* Basic Reset */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+            }
+    
+            /* Navbar */
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+                background: linear-gradient(to right, #0077b6, #00b4d8);
+                color: white;
+            }
+    
+            .navbar .logo {
+                display: flex;
+                align-items: center;
+            }
+    
+            .navbar img {
+                height: 50px;
+                margin-right: 10px;
+            }
+    
+            .navbar h1 {
+                font-size: 24px;
+                font-weight: bold;
+            }
+    
+            .navbar .nav-links {
+                display: flex;
+                gap: 20px;
+            }
+    
+            .navbar a {
+                color: white;
+                text-decoration: none;
+                font-size: 18px;
+            }
+    
+            .navbar a:hover {
+                text-decoration: underline;
+            }
+    
+            /* Hero Section */
+            .hero {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                background-image: url('https://i.ibb.co/1dfRxrv/car-transformed.png');
+                background-size: cover;
+                background-position: center;
+                text-align: center;
+                color: white;
+                padding: 20px;
+            }
+    
+            .hero p {
+                font-size: 20px;
+                margin: 20px 0;
+            }
+    
+            .hero .get-started-btn {
+                padding: 10px 20px;
+                font-size: 18px;
+                color: white;
+                background-color: #0096c7;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background 0.3s;
+                text-decoration: none;
+            }
+    
+            .hero .get-started-btn:hover {
+                background-color: #00b4d8;
+            }
+    
+            /* Symptom Input Section */
+            .symptom-section {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background: linear-gradient(to right, #03045e, #00b4d8);
+                color: #023e8a;
+                padding: 40px 0;
+            }
+    
+            .container {
+                display: flex;
+                align-items: center;
+                gap: 30px;
+                background-color: white;
+                border-radius: 8px;
+                padding: 20px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                width: 80%;
+                max-width: 900px;
+            }
+    
+            .image-container img {
+                width: 100%;
+                max-width: 300px;
+                border-radius: 8px;
+            }
+    
+            .symptom-section h2 {
+                font-size: 32px;
+                color: #0077b6;
+                margin-bottom: 20px;
+            }
+    
+            .input-group {
+                display: flex;
+                align-items: center;
+                width: 100%;
+            }
+    
+            .input-group input[type="text"] {
+                width: 100%;
+                padding: 10px 15px;
+                font-size: 18px;
+                border: 2px solid #00b4d8;
+                border-radius: 25px 0 0 25px;
+                outline: none;
+            }
+    
+            .input-group button {
+                padding: 10px 20px;
+                font-size: 18px;
+                color: white;
+                background-color: #00b4d8;
+                border: none;
+                border-radius: 0 25px 25px 0;
+                cursor: pointer;
+                transition: background 0.3s;
+            }
+    
+            .input-group button:hover {
+                background-color: #0077b6;
+            }
+    
+            /* Results Section */
+            .results {
+                margin-top: 30px;
+                text-align: left;
+            }
+            .results h2 {
+                padding: 5px 0;
+                font-size: 1.5em;
+                margin-top: 15px;
+            }
+            .results p {
+                color: #ffffff;
+                line-height: 1.6;
+            }
+            .precautions-list, .medications-list, .diet-list {
+                list-style: none;
+                padding: 0;
+            }
+            .precautions-list li, .medications-list li, .diet-list li {
+                padding: 5px 0;
+            }
+            .suggestions-dropdown {
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                max-width: 300px;
+                max-height: 150px;
+                overflow-y: auto;
+                background: #fff;
+                position: absolute;
+                z-index: 1000;
+                width: calc(100% - 20px); /* Adjust width to match input */
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            }
+            .suggestion-item {
+                padding: 10px;
+                cursor: pointer;
+                font-size: 14px;
+            }
+            .suggestion-item:hover {
+                background-color: #f0f0f0;
+            }
+            .input-group {
+                position: relative;
+            }
+    
+        </style>
+    </head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <a><img src="https://i.ibb.co/rw9qbst/logo.jpg" alt="logo" border="0"></a>
+            <h1>AI-Driven Disease Diagnosis</h1>
+        </div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">About Us</a>
+            <a href="/blog">Blog</a>
+            <a href="/contact">Contact Us</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <p>Enter symptoms and get a diagnosis with descriptions, diet, precautions, medications, and workout recommendations.</p>
+        <a href="#symptom-section" class="get-started-btn">Get Started</a>
+    </div>
+
+    <!-- Symptom Input Section -->
+    <div id="symptom-section" class="symptom-section">
+        <div class="container">
+            {% if not predicted_disease and not message %}
+            <div class="image-container">
+                <img src="https://i.ibb.co/q0JvSj1/doc-transformed.png" alt="Doctor Image">
+            </div>
+            {% endif %}
+            <div>
+                <h2>Enter Symptoms</h2>
+                <h3>Please enter symptoms separated by commas, with each symptom separated by spaces:</h3>
+                <form action="{{ url_for('home') }}" method="POST">
+                    <div class="input-group">
+                        <input type="text" id="symptom-search" name="symptoms" placeholder="Type your symptoms here..." oninput="showSuggestions(this.value)" required autocomplete="off">
+                        <button type="submit">Search</button>
+                    </div>
+                    <div id="suggestions" class="suggestions-dropdown"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //symptoms_dict 
+        const symptoms_dict = {'itching': 0, 'skin rash': 1, 'nodal skin eruptions': 2, 'continuous sneezing': 3, 'shivering': 4, 'chills': 5, 'joint pain': 6, 'stomach pain': 7, 'acidity': 8, 'ulcers on tongue': 9, 'muscle wasting': 10, 'vomiting': 11, 'burning micturition': 12, 'spotting  urination': 13, 'fatigue': 14, 'weight gain': 15, 'anxiety': 16, 'cold hands and feets': 17, 'mood swings': 18, 'weight loss': 19, 'restlessness': 20, 'lethargy': 21, 'patches in throat': 22, 'irregular sugar level': 23, 'cough': 24, 'high fever': 25, 'sunken eyes': 26, 'breathlessness': 27, 'sweating': 28, 'dehydration': 29, 'indigestion': 30, 'headache': 31, 'yellowish skin': 32, 'dark urine': 33, 'nausea': 34, 'loss of appetite': 35, 'pain behind the eyes': 36, 'back pain': 37, 'constipation': 38, 'abdominal pain': 39, 'diarrhoea': 40, 'mild fever': 41, 'yellow urine': 42, 'yellowing of eyes': 43, 'acute liver failure': 44, 'fluid overload': 45, 'swelling of stomach': 46, 'swelled lymph nodes': 47, 'malaise': 48, 'blurred and distorted vision': 49, 'phlegm': 50, 'throat irritation': 51, 'redness of eyes': 52, 'sinus pressure': 53, 'runny nose': 54, 'congestion': 55, 'chest pain': 56, 'weakness in limbs': 57, 'fast heart rate': 58, 'pain during bowel movements': 59, 'pain in anal region': 60, 'bloody stool': 61, 'irritation in anus': 62, 'neck pain': 63, 'dizziness': 64, 'cramps': 65, 'bruising': 66, 'obesity': 67, 'swollen legs': 68, 'swollen blood vessels': 69, 'puffy face and eyes': 70, 'enlarged thyroid': 71, 'brittle nails': 72, 'swollen extremeties': 73, 'excessive hunger': 74, 'extra marital contacts': 75, 'drying and tingling lips': 76, 'slurred speech': 77, 'knee pain': 78, 'hip joint pain': 79, 'muscle weakness': 80, 'stiff neck': 81, 'swelling joints': 82, 'movement stiffness': 83, 'spinning movements': 84, 'loss of balance': 85, 'unsteadiness': 86, 'weakness of one body side': 87, 'loss of smell': 88, 'bladder discomfort': 89, 'foul smell of urine': 90, 'continuous feel of urine': 91, 'passage of gases': 92, 'internal itching': 93, 'toxic look (typhos)': 94, 'depression': 95, 'irritability': 96, 'muscle pain': 97, 'altered sensorium': 98, 'red spots over body': 99, 'belly pain': 100, 'abnormal menstruation': 101, 'dischromic  patches': 102, 'watering from eyes': 103, 'increased appetite': 104, 'polyuria': 105, 'family history': 106, 'mucoid sputum': 107, 'rusty sputum': 108, 'lack of concentration': 109, 'visual disturbances': 110, 'receiving blood transfusion': 111, 'receiving unsterile injections': 112, 'coma': 113, 'stomach bleeding': 114, 'distention of abdomen': 115, 'history of alcohol consumption': 116, 'fluid overload.1': 117, 'blood in sputum': 118, 'prominent veins on calf': 119, 'palpitations': 120, 'painful walking': 121, 'pus filled pimples': 122, 'blackheads': 123, 'scurring': 124, 'skin peeling': 125, 'silver like dusting': 126, 'small dents in nails': 127, 'inflammatory nails': 128, 'blister': 129, 'red sore around nose': 130, 'yellow crust ooze': 131};
+
+        function showSuggestions(input) {
+            const suggestionsContainer = document.getElementById('suggestions');
+            suggestionsContainer.innerHTML = ''; // Clear previous suggestions
+
+            // Get the latest symptom (text after the last comma)
+            const symptoms = input.split(',');
+            const lastSymptom = symptoms[symptoms.length - 1].trim();
+
+            // If lastSymptom is empty, do not display suggestions
+            if (!lastSymptom) return;
+
+            // Filter symptoms based on the last symptom (case-insensitive, partial matches allowed)
+            const suggestions = Object.keys(symptoms_dict).filter(symptom =>
+                symptom.toLowerCase().includes(lastSymptom.toLowerCase())
+            );
+
+            // Display each suggestion as a clickable item
+            suggestions.forEach(symptom => {
+                const suggestionItem = document.createElement('div');
+                suggestionItem.classList.add('suggestion-item');
+                suggestionItem.textContent = symptom;
+
+                // Add click event to append the selected suggestion to the input field
+                suggestionItem.onclick = () => {
+                    symptoms[symptoms.length - 1] = ` ${symptom}`; // Replace last entry with selected suggestion
+                    document.getElementById('symptom-search').value = symptoms.join(', '); // Update input field
+                    suggestionsContainer.innerHTML = ''; // Clear suggestions
+                };
+
+                suggestionsContainer.appendChild(suggestionItem);
+            });
+        }
+
+        // Hide suggestions when clicking outside
+        document.addEventListener('click', function(event) {
+            const suggestionsContainer = document.getElementById('suggestions');
+            const inputField = document.getElementById('symptom-search');
+            if (!suggestionsContainer.contains(event.target) && event.target !== inputField) {
+                suggestionsContainer.innerHTML = ''; // Clear suggestions
+            }
+        });
+    </script>
+</body>
+   </html>
+    
+
+    

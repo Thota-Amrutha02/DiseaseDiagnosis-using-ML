@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnosis Results</title>
+    <style>
+        /* Background color inspired by the provided palette */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0D47A1; /* Plain blue background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #FFFFFF; /* White text color for contrast */
+        }
+        
+       
+        .results-container {
+            padding: 20px;
+            max-width: 800px;
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: #000000; /* Black text color for readability on white */
+            text-align: left;
+        }
+
+        .error-message {
+            color: #D32F2F; /* Red color for error message */
+            font-weight: bold;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        .get-started-btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            background-color: #0096c7;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+        .get-started-btn:hover {
+            background-color: #00b4d8;
+        }
+    </style>
+</head>
+<body>
+    <div class="results-container">
+        <h1 align="center">Our AI System Results</h1>
+        {% if message %}
+            <p class="error-message">{{ message }}</p>
+        {% else %}
+            <h2>Disease: {{ predicted_disease }}</h2>
+            <p><strong>Description:</strong> {{ dis_des }}</p>
+
+            <h3>Precautions:</h3>
+            <ul>
+                {% for precaution in my_precautions %}
+                <li>{{ precaution }}</li>
+                {% endfor %}
+            </ul>
+
+            <h3>Medications:</h3>
+            <ul>
+                {% for med in medications %}
+                <li>{{ med }}</li>
+                {% endfor %}
+            </ul>
+
+            <h3>Diet Recommendations:</h3>
+            <ul>
+                {% for diet in my_diet %}
+                <li>{{ diet }}</li>
+                {% endfor %}
+            </ul>
+
+            <h3>Workout Recommendations:</h3>
+            <ul>
+                {% for work in workout %}
+                <li>{{ work }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <a href="/" class="get-started-btn">Home</a>
+    </div>
+</body>
+</html>
